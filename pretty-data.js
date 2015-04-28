@@ -121,7 +121,9 @@ pp.prototype.xml = function(text) {
 			} else 
 			// xmlns //
 			if( ar[ix].search(/xmlns\:/) > -1  || ar[ix].search(/xmlns\=/) > -1) { 
-				str += this.shift[deep]+ar[ix];
+				// Salesforce-style format: no newline before xmlns
+				//str += this.shift[deep]+ar[ix];
+				str += ' ' + ar[ix];
 			} 
 			
 			else {
