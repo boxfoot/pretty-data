@@ -123,15 +123,21 @@ pp.prototype.xml = function(text) {
 			if( ar[ix].search(/xmlns\:/) > -1  || ar[ix].search(/xmlns\=/) > -1) { 
 				// Salesforce-style format: no newline before xmlns
 				//str += this.shift[deep]+ar[ix];
-				str += ' ' + ar[ix];
+				str += ar[ix];
 			} 
 			
 			else {
 				str += ar[ix];
 			}
 		}
+
+	// Strip leading newline
+	str = (str[0] == '\n') ? str.slice(1) : str;
+
+	// SF-style:  Add trailing newline
+	str += '\n';
 		
-	return  (str[0] == '\n') ? str.slice(1) : str;
+	return str;
 }
 
 // ----------------------- JSON section ----------------------------------------------------
