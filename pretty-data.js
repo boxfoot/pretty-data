@@ -48,9 +48,11 @@
 */
 
 
-function pp() {
+function pp(options) {
+	options = options || {};
+
 	this.shift = ['\n']; // array of shifts
-	this.step = '  '; // 2 spaces
+	this.step = options.indent || '  '; // 2 space indent by default
 	var maxdeep = 100, // nesting level
       ix = 0;
 
@@ -331,7 +333,8 @@ pp.prototype.sqlmin = function(text) {
 
 // --------------------------------------------------------------------------------------------
 
-exports.pd= new pp;	
+exports.pd= new pp;
+exports.PrettyPrinter = pp;
 
 
 
